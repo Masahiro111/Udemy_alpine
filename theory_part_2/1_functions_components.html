@@ -53,9 +53,15 @@
                     <script>
                         function myComponent() {
                             return {
+
+                                myName: '',
+
                                 hello() {
                                     alert('hello!');
                                 },
+                                sayMyName() {
+                                    alert('Are you ' + this.myName);
+                                }
                             }
                         }
                     </script>
@@ -73,12 +79,19 @@
 
                     <!-- Example 3: @click show name from Input -->
                     <h3><b>Example 3:</b> Reuse Component and use "this." for object values</h3>
-                    <section>
-                        <button class="bg-gray-200 p-1 rounded hover:bg-gray-300 border border-1 border-gray-500">
+                    <section
+                             x-data="myComponent()">
+                        <button
+                                x-on:click="sayMyName()"
+                                class="bg-gray-200 p-1 rounded hover:bg-gray-300 border border-1 border-gray-500">
                             SAY MY NAME !!!
                         </button>
                         <form class="inline">
-                            <input type="text" placeholder="Enter Name" class="ml-2">
+                            <input
+                                   x-model="myName"
+                                   type="text"
+                                   placeholder="Enter Name"
+                                   class="ml-2">
                         </form>
                     </section>
 
